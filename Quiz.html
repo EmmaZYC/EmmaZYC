@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Emma's First Quiz</title>
+<style>
+.button {
+  background-color: #4d2500; 
+  border: 10px;
+  color: #fff9a2;
+  padding: 30px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+}
+.grid-container-key {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto auto auto;
+  background-color: #fff9a2; /* My favourite color */
+  padding: 5px;
+}
+.grid-container-key2 {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto;
+  background-color: #fff9a2; /* My favourite color */
+  padding: 5px;
+}
+.grid-container-answer {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto;
+  background-color: #fff9a2;
+  padding: 10px;
+}
+.textbar {
+  background-color:#4d2500;
+  border: 10px;
+  color: #fff9a2;
+  padding: 40px 40px;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+}
+</style>
+</head>
+<body onload="fillin1stquestion()">
+
+<div class="grid-container-answer">
+<input class="textbar" type="textfield" id="answer" value= "">
+</div>
+<div class="grid-container-key">
+  <input class="button" type="button" value="" id="answer1" onClick="doquiz(this.value)" >
+  <input class="button" type="button" value="" id="answer2" onClick="doquiz(this.value)" >
+  <input class="button" type="button" value="" id="answer3" onClick="doquiz(this.value)" >
+  <input class="button" type="button" value="" id="answer4" onClick="doquiz(this.value)" >
+</div>
+<div class="grid-container-key2">
+  <input class="button" type="button" value="Total Score: 0/6" id="scoreid" onClick="current_question()" >
+  <input class="button" type="button" value="NEXT" onClick="new_question()" >
+</div>
+<script type="text/javascript">
+
+Array.prototype.shuffle = function () {
+  let input = this;
+
+  for (let i = input.length - 1; i >= 0; i--) {
+
+    let randomIndex = Math.floor(Math.random() * (i + 1));
+    let itemAtIndex = input[randomIndex];
+
+    input[randomIndex] = input[i];
+    input[i] = itemAtIndex;
+  }
+  return input;
+}
+
+var questions = {
+// no : [ question, answer ]
+  1 : [ "1. What is between Z and B?", ["A","B","C","D"] ],
+  2 : [ "2. What is between A and C?", ["B","C","A","D"] ],
+  3 : [ "3. What is between B and D?", ["C","B","D","A"] ],
+  4 : [ "4. What is between C and E?", ["D","B","C","A"] ],
+  5 : [ "5. What is between A and C?", ["B","E","C","A"] ],
+  6 : [ "6. What is between C and E?", ["D","B","C","A"] ],
+}
+var whichqn = 0;
+var score = 0;
+var answered = false;
+
+function fillin1stquestion() {
+  new_question()
+}
+
+function doquiz(i) {
+  var currentQuestion = questions[whichqn]
+  try{
+    if (answered)
+    {
+      alert("You have answered this question. Please click 'next'.")
+    }
+    else{
+      if (i == currentQuestion[1][0] ) {
+        document.getElementById('answer').value = "Your are correct!"
+        score = score + 1
+        document.getElementById('scoreid').value = "Total Score: " + score + "/6"
+      }
+      else
+      {
+        document.getElementById('answer').value = "You are incorrect!"
+      }
+      answered = true
+    }
+  }
+  catch(e) {
+    document.getElementById('answer').value = "Congrats, You've finished the quiz!"
+  }
+}
+
+function new_question() {
+  whichqn = whichqn + 1;
+  if (whichqn > 6) {
+    alert("What the HECK!! Done already boudo!")
+    location.reload()
+  }
+  var currentQuestion = questions[whichqn]
+  document.getElementById('answer').value = currentQuestion[0]
+
+  var shuffled = [...currentQuestion[1]].shuffle()
+  document.getElementById('answer1').value = shuffled[0]
+  document.getElementById('answer2').value = shuffled[1]
+  document.getElementById('answer3').value = shuffled[2]
+  document.getElementById('answer4').value = shuffled[3]
+  answered = false;
+}
+
+function current_question() {
+
+  var currentQuestion = questions[whichqn]
+  var shuffled = [...currentQuestion[1]].shuffle()
+  document.getElementById('answer1').value = shuffled[0]
+  document.getElementById('answer2').value = shuffled[1]
+  document.getElementById('answer3').value = shuffled[2]
+  document.getElementById('answer4').value = shuffled[3]
+}
+</script>
+</body>
+</html>
