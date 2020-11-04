@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Emma's First Calculator</title>
+<style>
+.button {
+  background-color: white; /* Purple */
+  border: 10px;
+  background-color: white(246, 188, 252);
+  color: rgb(246, 188, 252);
+  padding: 30px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+}
+.grid-container-key {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto auto auto;
+  background-color: rgb(246, 188, 252);
+  padding: 5px;
+}
+.grid-container-answer {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto;
+  background-color: rgb(246, 188, 252);
+  padding: 10px;
+}
+.textbar {
+  background-color:white;
+  border: 10px;
+  color:rgb(246, 188, 252);
+  padding: 40px 40px;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+}
+</style>
+</head>
+<body>
+
+<div class="grid-container-answer">
+<input class="textbar" type="textfield" id="answer" value=''>
+</div>
+<div class="grid-container-key">
+  <input class="button" type="button" value="1"  onClick="calc('1')" >
+  <input class="button" type="button" value="2"  onClick="calc('2')" >
+  <input class="button" type="button" value="3"  onClick="calc('3')" >
+  <input class="button" type="button" value="-"  onClick="calc('-')" >
+  <input class="button" type="button" value="4"  onClick="calc('4')" >
+  <input class="button" type="button" value="5"  onClick="calc('5')" >
+  <input class="button" type="button" value="6"  onClick="calc('6')" >
+  <input class="button" type="button" value="+"  onClick="calc('+')" >
+  <input class="button" type="button" value="7"  onClick="calc('7')" >
+  <input class="button" type="button" value="8"  onClick="calc('8')" >
+  <input class="button" type="button" value="9"  onClick="calc('9')" >
+  <input class="button" type="button" value="x"  onClick="calc('*')" >
+  <input class="button" type="button" value="/"  onClick="calc('/')" >
+  <input class="button" type="button" value="0"  onClick="calc('0')" >
+  <input class="button" type="button" value="C"  onClick="calc('C')" >
+  <input class="button" type="button" value="="  onClick="calc('=')" >
+</div>
+<script type="text/javascript">
+function calc(i) {
+try{
+  if ( i == 'C' ) {
+    document.getElementById("answer").value = '';
+  }
+  if ( ['0','1','2','3','4','5','6','7','8','9','+','-','*','/'].includes(i) )
+ {
+    if (document.getElementById("answer").value == "ERROR!")
+    {
+      document.getElementById('answer').value = i
+    }
+    else
+    {
+      document.getElementById("answer").value = document.getElementById("answer").value + i;
+    }
+  }
+  if ( i == '=' ) {
+    document.getElementById("answer").value = eval(document.getElementById("answer").value);
+  }
+}
+catch(e)
+{
+  document.getElementById("answer").value = "ERROR!"
+ /* alert("Something is wrong. Please try again.")*/
+}
+}
+</script>
+</body>
+</html>
