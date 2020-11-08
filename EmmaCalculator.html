@@ -2,6 +2,13 @@
 <head>
 <title>Emma's First Calculator</title>
 <style>
+.homediv {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto;
+  grid-template-rows: 25vh 73vh;
+  padding: 0px;
+}
 .button {
   background-color: white; /* Purple */
   border: 10px;
@@ -41,26 +48,28 @@
 </head>
 <body>
 
-<div class="grid-container-answer">
-<input class="textbar" type="textfield" id="answer" value=''>
-</div>
-<div class="grid-container-key">
-  <input class="button" type="button" value="1"  onClick="calc('1')" >
-  <input class="button" type="button" value="2"  onClick="calc('2')" >
-  <input class="button" type="button" value="3"  onClick="calc('3')" >
-  <input class="button" type="button" value="-"  onClick="calc('-')" >
-  <input class="button" type="button" value="4"  onClick="calc('4')" >
-  <input class="button" type="button" value="5"  onClick="calc('5')" >
-  <input class="button" type="button" value="6"  onClick="calc('6')" >
-  <input class="button" type="button" value="+"  onClick="calc('+')" >
-  <input class="button" type="button" value="7"  onClick="calc('7')" >
-  <input class="button" type="button" value="8"  onClick="calc('8')" >
-  <input class="button" type="button" value="9"  onClick="calc('9')" >
-  <input class="button" type="button" value="x"  onClick="calc('*')" >
-  <input class="button" type="button" value="/"  onClick="calc('/')" >
-  <input class="button" type="button" value="0"  onClick="calc('0')" >
-  <input class="button" type="button" value="C"  onClick="calc('C')" >
-  <input class="button" type="button" value="="  onClick="calc('=')" >
+<div class="homediv">
+  <div class="grid-container-answer">
+    <input class="textbar" type="textfield" id="answer" value=''>
+  </div>
+  <div class="grid-container-key">
+    <input class="button" type="button" value="1"  onClick="calc('1')" >
+    <input class="button" type="button" value="2"  onClick="calc('2')" >
+    <input class="button" type="button" value="3"  onClick="calc('3')" >
+    <input class="button" type="button" value="-"  onClick="calc('-')" >
+    <input class="button" type="button" value="4"  onClick="calc('4')" >
+    <input class="button" type="button" value="5"  onClick="calc('5')" >
+    <input class="button" type="button" value="6"  onClick="calc('6')" >
+    <input class="button" type="button" value="+"  onClick="calc('+')" >
+    <input class="button" type="button" value="7"  onClick="calc('7')" >
+    <input class="button" type="button" value="8"  onClick="calc('8')" >
+    <input class="button" type="button" value="9"  onClick="calc('9')" >
+    <input class="button" type="button" value="x"  onClick="calc('*')" >
+    <input class="button" type="button" value="/"  onClick="calc('/')" >
+    <input class="button" type="button" value="0"  onClick="calc('0')" >
+    <input class="button" type="button" value="C"  onClick="calc('C')" >
+    <input class="button" type="button" value="="  onClick="calc('=')" >
+  </div>
 </div>
 <script type="text/javascript">
 function calc(i) {

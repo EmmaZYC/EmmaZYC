@@ -17,8 +17,9 @@
   display: grid;
   grid-gap: 5px;
   grid-template-columns: auto auto;
+  grid-template-rows: 98vh;
   background-color: rgb(246, 188, 252);
-  padding: 5px;
+  padding: 0px;
 }
 .grid-container-home-text {
   display: grid;
@@ -46,15 +47,15 @@
 </style>
 </head>
 <body>
-  <div class="grid-container-home">
-<div class="grid-container-home-text">
-<h1>HOME</h1>
-</div>
-<div class="grid-container-key">
-  <input class="button" type="button" value="Calculator"  onClick="gotourl('EmmaCalculator.html')" >
-  <input class="button" type="button" value="MyQuiz"  onClick="gotourl('Quiz.html')" >
-  <input class="button" type="button" value="3"  onClick="gotourl('3')" >
-</div>
+<div class="grid-container-home">
+  <div class="grid-container-home-text">
+    <h1>HOME</h1>
+  </div>
+  <div class="grid-container-key">
+    <input class="button" type="button" value="Calculator"  onClick="gotourl('EmmaCalculator.html')" >
+    <input class="button" type="button" value="MyQuiz"  onClick="gotourl('Quiz.html')" >
+    <input class="button" type="button" value="3"  onClick="gotourl('3')" >
+  </div>
 </div>
 <script type="text/javascript">
 function gotourl(url) {
