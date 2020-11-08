@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <title>Emma's First Quiz</title>
@@ -57,9 +58,10 @@
   <input class="button" type="button" value="" id="answer4" onClick="doquiz(this.value)" >
 </div>
 <div class="grid-container-key2">
-  <input class="button" type="button" value="Total Score: 0/6" id="scoreid" onClick="current_question()" >
+  <input class="button" type="button" value="" id="scoreid" onClick="current_question()" >
   <input class="button" type="button" value="NEXT" onClick="new_question()" >
 </div>
+<script type="text/javascript" src="questions.js"></script>
 <script type="text/javascript">
 
 Array.prototype.shuffle = function () {
@@ -76,16 +78,10 @@ Array.prototype.shuffle = function () {
   return input;
 }
 
-var questions = {
-// no : [ question, answer ]
-  1 : [ "1. What is between Z and B?", ["A","B","C","D"] ],
-  2 : [ "2. What is between A and C?", ["B","C","A","D"] ],
-  3 : [ "3. What is between B and D?", ["C","B","D","A"] ],
-  4 : [ "4. What is between C and E?", ["D","B","C","A"] ],
-  5 : [ "5. What is between A and C?", ["B","E","C","A"] ],
-  6 : [ "6. What is between C and E?", ["D","B","C","A"] ],
-}
-var whichqn = 0;
+questions.shuffle();
+
+var noofqtns = questions.length;
+var whichqn = -1;
 var score = 0;
 var answered = false;
 
@@ -104,7 +100,7 @@ function doquiz(i) {
       if (i == currentQuestion[1][0] ) {
         document.getElementById('answer').value = "Your are correct!"
         score = score + 1
-        document.getElementById('scoreid').value = "Total Score: " + score + "/6"
+        document.getElementById('scoreid').value = "Total Score: " + score + "/" + noofqtns;
       }
       else
       {
@@ -120,18 +116,19 @@ function doquiz(i) {
 
 function new_question() {
   whichqn = whichqn + 1;
-  if (whichqn > 6) {
+  if (whichqn > noofqtns) {
     alert("You have finished this quiz already!")
     location.reload()
   }
   var currentQuestion = questions[whichqn]
-  document.getElementById('answer').value = currentQuestion[0]
+  document.getElementById('answer').value = whichqn + 1 + '. ' + currentQuestion[0]
 
   var shuffled = [...currentQuestion[1]].shuffle()
   document.getElementById('answer1').value = shuffled[0]
   document.getElementById('answer2').value = shuffled[1]
   document.getElementById('answer3').value = shuffled[2]
   document.getElementById('answer4').value = shuffled[3]
+  document.getElementById('scoreid').value = "Total Score: " + score + "/" + noofqtns;
   answered = false;
 }
 
@@ -147,3 +144,4 @@ function current_question() {
 </script>
 </body>
 </html>
+
